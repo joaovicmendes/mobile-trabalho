@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">App</string>
+    <string name="profile_last_activities">Ultimas atividades</string>
+    <string name="profile_options">Opções</string>
+    <string name="profile_logout">Sair</string>
+    <string name="profile_nextactv_timedate">Data/Horario</string>
+    <string name="profile_nextactv_name">Proxima atividade</string>
+    <string name="profile_username">Nome De Usuario</string>
 </resources>
