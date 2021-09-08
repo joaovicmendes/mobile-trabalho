@@ -1,7 +1,8 @@
-package br.ufscar.dc.mobile.app
+package br.ufscar.dc.mobile.app.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.ufscar.dc.mobile.app.R
 
 class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
