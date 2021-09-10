@@ -6,4 +6,7 @@
     <string name="profile_nextactv_timedate">Data/Horario</string>
     <string name="profile_nextactv_name">Proxima atividade</string>
     <string name="profile_username">Nome De Usuario</string>
+    <string name="home_title_text_view">Adicionados Recentemente</string>
+    <string name="course_item_title_placeholder">Course Item Title</string>
+    <string name="course_item_instructor_placeholder">Prof. M</string>
 </resources>

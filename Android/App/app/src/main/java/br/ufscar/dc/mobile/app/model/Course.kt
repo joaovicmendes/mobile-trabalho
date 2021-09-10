@@ -9,4 +9,5 @@ data class Course (
     val category: Category,
     val schedule: Schedule,
     val explanationUrl: String,
+    val thumbnail: String,
 )
