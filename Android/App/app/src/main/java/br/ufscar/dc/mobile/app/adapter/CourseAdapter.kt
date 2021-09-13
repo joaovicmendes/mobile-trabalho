@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.ufscar.dc.mobile.app.R
 import br.ufscar.dc.mobile.app.model.Course
+import br.ufscar.dc.mobile.app.model.CourseDto
 import kotlinx.android.synthetic.main.course_item.view.*
 
 class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
-    private var courseList = emptyList<Course>()
+    private var courseList = emptyList<CourseDto>()
 
     class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -28,7 +29,7 @@ class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
         holder.itemView.apply {
             // course_item_image = ??
             course_item_title.text = currentCourse.title
-            course_item_instructor.text = currentCourse.instructor.name
+            course_item_instructor.text = currentCourse.instructorId
             course_item_rating.numStars = currentCourse.rating
         }
     }
@@ -37,7 +38,7 @@ class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
         return courseList.size
     }
 
-    fun setList(courses: List<Course>) {
+    fun setList(courses: List<CourseDto>) {
         courseList = courses
         notifyDataSetChanged()
     }

@@ -1,12 +1,12 @@
 package br.ufscar.dc.mobile.app.model
 
-data class Course (
+data class CourseDto (
     val id: String,
     val title: String,
-    val instructor: User,
+    val instructorId: String,
     val description: String,
     val rating: Int,
-    val category: Category,
+    val categoryId: String,
     val schedule: String,
     val videoUrl: String,
     val thumbnail: String,
