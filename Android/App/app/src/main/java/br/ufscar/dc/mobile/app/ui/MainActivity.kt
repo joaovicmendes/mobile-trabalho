@@ -3,10 +3,12 @@ package br.ufscar.dc.mobile.app.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import br.ufscar.dc.mobile.app.R
 import br.ufscar.dc.mobile.app.ui.fragments.HomeFragment
 import br.ufscar.dc.mobile.app.ui.fragments.ProfileFragment
 import br.ufscar.dc.mobile.app.ui.fragments.SearchFragment
+import br.ufscar.dc.mobile.app.viewmodel.CategoryViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +30,10 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        // Fetching current app categories
+        val categoryViewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
+        categoryViewModel.fetchCategories()
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
