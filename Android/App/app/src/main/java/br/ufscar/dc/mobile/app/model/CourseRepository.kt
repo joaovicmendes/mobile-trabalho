@@ -7,11 +7,11 @@ import retrofit2.Call
 class CourseRepository {
     private val retrofit = RetrofitClient.createService(CoursesApiService::class.java)
 
-    fun fetchAllCourses(): Call<List<CourseDto>> {
+    fun fetchAllCourses(): Call<List<Course>> {
         return retrofit.getAll()
     }
 
-    suspend fun fetchCourse(id: String): CourseDto {
+    suspend fun fetchCourse(id: String): Course {
         return retrofit.get(id)
     }
 }
