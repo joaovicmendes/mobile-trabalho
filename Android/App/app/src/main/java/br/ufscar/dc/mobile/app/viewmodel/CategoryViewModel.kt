@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.ufscar.dc.mobile.app.model.Category
 import br.ufscar.dc.mobile.app.model.CategoryRepository
@@ -15,6 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CategoryViewModel(application: Application) : AndroidViewModel(application) {
+    var categoryList = MutableLiveData<List<Category>>()
     private var categoryRepo: CategoryRepository
 
     init {
@@ -40,8 +42,10 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun getCategories(): LiveData<List<Category>> {
-        return categoryRepo.getAllCategories()
+    fun getCategories() {
+        viewModelScope.launch(Dispatchers.IO) {
+            categoryList.postValue(categoryRepo.getAllCategories())
+        }
     }
 
     private fun insertListIntoDB(list: List<Category>) {

@@ -9,4 +9,5 @@
     <string name="home_title_text_view">Adicionados Recentemente</string>
     <string name="course_item_title_placeholder">Course Item Title</string>
     <string name="course_item_instructor_placeholder">Prof. M</string>
+    <string name="button_placeholder_text">Button Placeholder Text</string>
 </resources>

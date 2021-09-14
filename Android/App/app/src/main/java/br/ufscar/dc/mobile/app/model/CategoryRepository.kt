@@ -14,7 +14,7 @@ class CategoryRepository(dao: CategoryDao) {
         return retrofit.getAll()
     }
 
-    fun getAllCategories(): LiveData<List<Category>> {
+    suspend fun getAllCategories(): List<Category> {
         return categoryDao.getAll()
     }
 
