@@ -8,12 +8,40 @@ admin.initializeApp();
 
 // Courses API
 app.get('/courses', async(req, res) => {
+    const rawUsers = await admin.firestore().collection('users').get();
+    let users = {};
+    rawUsers.forEach(doc => {
+        users[doc.id] = { id: doc.id, ...doc.data()};
+    });
+
+    const rawCategories = await admin.firestore().collection('categories').get();
+    let categories = {};
+    rawUsers.forEach(doc => {
+        users[doc.id] = { id: doc.id, ...doc.data()};
+    });
+
+    rawCategories.forEach(doc => {
+        users[doc.id] = { id: doc.id, ...doc.data()};
+    });
+
     const snapshot = await admin.firestore().collection('courses').get();
     let courses = [];
     snapshot.forEach(doc => {
         let id = doc.id;
         let data = doc.data();
-        courses.push({id, ...data});
+        const instructor = users[data.instructorId];
+        const category = categories[data.categoryId];
+        courses.push({
+            id: id,
+            title: data.title,
+            description: data.description,
+            instructor: instructor,
+            category: category,
+            rating: data.rating,
+            videoUrl: data.videoUrl,
+            thumbnail: data.thumbnail,
+            schedule: data.schedule
+        });
     });
     res.status(200).send(JSON.stringify(courses));
 });
@@ -22,7 +50,26 @@ app.get('/courses/:id', async (req, res) => {
     const snapshot = await admin.firestore().collection('courses').doc(req.params.id).get();
     courseId = snapshot.id;
     courseData = snapshot.data();
-    res.status(200).send(JSON.stringify({courseId, ...courseData}));
+
+    const rawUser = await admin.firestore().collection('users').doc(courseData.instructorId).get();
+    let instructor = {id: courseData.instructorId, ...rawUser.data()}
+
+    const rawCatagory = await admin.firestore().collection('categories').doc(courseData.categoryId).get();
+    let category = {id: courseData.categoryId, ...rawCatagory.data()}
+
+    const course = {
+        id: courseId,
+        title: courseData.title,
+        description: courseData.description,
+        instructor: instructor,
+        category: category,
+        rating: courseData.rating,
+        videoUrl: courseData.videoUrl,
+        thumbnail: courseData.thumbnail,
+        schedule: courseData.schedule
+    }
+
+    res.status(200).send(JSON.stringify(course));
 });
 
 app.post('/courses', async (req, res) => {
