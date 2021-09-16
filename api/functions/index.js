@@ -16,12 +16,8 @@ app.get('/courses', async(req, res) => {
 
     const rawCategories = await admin.firestore().collection('categories').get();
     let categories = {};
-    rawUsers.forEach(doc => {
-        users[doc.id] = { id: doc.id, ...doc.data()};
-    });
-
     rawCategories.forEach(doc => {
-        users[doc.id] = { id: doc.id, ...doc.data()};
+        categories[doc.id] = { id: doc.id, ...doc.data()};
     });
 
     const snapshot = await admin.firestore().collection('courses').get();
