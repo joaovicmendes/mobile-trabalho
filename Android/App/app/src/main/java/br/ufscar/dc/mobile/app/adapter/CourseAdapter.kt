@@ -26,7 +26,6 @@ class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         val currentCourse = courseList[position]
         holder.itemView.apply {
-            // course_item_image = ??
             course_item_title.text = currentCourse.title
             course_item_instructor.text = currentCourse.instructor.name
             course_item_rating.numStars = currentCourse.rating
