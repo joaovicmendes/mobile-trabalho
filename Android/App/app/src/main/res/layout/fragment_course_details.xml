@@ -9,21 +9,24 @@
 
     <TextView
         android:id="@+id/course_details_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="209dp"
+        android:layout_height="57dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:text=""
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/course_details_description"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/course_details_instructor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text=""
-        app:layout_constraintStart_toStartOf="@+id/course_details_description"
+        app:layout_constraintBottom_toTopOf="@+id/course_details_rating"
+        app:layout_constraintStart_toStartOf="@+id/course_details_title"
         app:layout_constraintTop_toBottomOf="@+id/course_details_title" />
 
     <RatingBar
@@ -31,9 +34,8 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/course_details_description"
-        app:layout_constraintTop_toBottomOf="@+id/course_details_instructor" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/course_details_title" />
 
     <TextView
         android:id="@+id/course_details_descriptionTitle"
@@ -67,5 +69,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/course_details_description"
         app:layout_constraintVertical_bias="0.319" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="111dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="68dp"
+        android:src="@android:drawable/progress_indeterminate_horizontal"
+        app:layout_constraintStart_toStartOf="@+id/course_details_description"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
