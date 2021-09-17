@@ -1,7 +1,5 @@
 package br.ufscar.dc.mobile.app.adapter
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +11,7 @@ import kotlinx.android.synthetic.main.category_item.view.*
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     private var categoryList = emptyList<Category>()
+    private var onItemClickListener: CategoryOnClickListener? = null
 
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -32,6 +31,9 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
             category_item_button.text = currentCategory.name
             category_item_button.setBackgroundColor(currentCategory.hexColor.toColorInt())
             category_item_button.tag = currentCategory.id
+            category_item_button.setOnClickListener {
+                onItemClickListener?.onItemClick(currentCategory.id)
+            }
         }
     }
 
@@ -42,5 +44,9 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
     fun setList(categories: List<Category>) {
         categoryList = categories
         notifyDataSetChanged()
+    }
+
+    fun setClickListener(listener: CategoryOnClickListener) {
+        onItemClickListener = listener
     }
 }

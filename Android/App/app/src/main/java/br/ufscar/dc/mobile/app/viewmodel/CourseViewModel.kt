@@ -15,6 +15,7 @@ import retrofit2.Response
 class CourseViewModel : ViewModel() {
     private val courseRepo = CourseRepository()
     val courseList = MutableLiveData<List<Course>>()
+    val courseByCategoryList = MutableLiveData<List<Course>>()
 
     fun fetchCourses() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -26,6 +27,21 @@ class CourseViewModel : ViewModel() {
 
                 override fun onFailure(call: Call<List<Course>>, t: Throwable) {
                     Log.d("RetrofitError", "Erro ao buscar todos os cursos", t)
+                }
+            })
+        }
+    }
+
+    fun fetchCoursesByCategory(categoryId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val call = courseRepo.fetchCoursesByCategory(categoryId)
+            call.enqueue(object : Callback<List<Course>> {
+                override fun onResponse(call: Call<List<Course>>, response: Response<List<Course>>) {
+                    courseByCategoryList.postValue(response.body())
+                }
+
+                override fun onFailure(call: Call<List<Course>>, t: Throwable) {
+                    Log.d("RetrofitError", "Erro ao buscar todos os cursos da categoria " + categoryId, t)
                 }
             })
         }
