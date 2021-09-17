@@ -9,7 +9,7 @@
         android:id="@+id/category_item_button"
         android:layout_width="182dp"
         android:layout_height="90dp"
-        android:text="@string/button_placeholder_text"
+        android:text=""
         android:textSize="12sp"
         android:backgroundTint="@color/black"
         android:layout_marginTop="2dp"

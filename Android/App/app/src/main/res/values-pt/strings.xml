@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="profile_last_activities">Ultimas atividades</string>
+    <string name="profile_options">Opções</string>
+    <string name="profile_logout">Sair</string>
+    <string name="profile_nextactv_timedate">Data/Horario</string>
+    <string name="profile_nextactv_name">Proxima atividade</string>
+    <string name="profile_username">Nome De Usuario</string>
+    <string name="home_title_text_view">Adicionados Recentemente</string>
+    <string name="course_detail_description">Descrição</string>
+    <string name="course_detail_button">Agendar</string>
+    <string name="nav_menu_home">Início</string>
+    <string name="nav_menu_search">Busca</string>
+    <string name="nav_menu_profile">Perfil</string>
+</resources>

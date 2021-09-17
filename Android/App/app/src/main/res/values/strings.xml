@@ -1,20 +1,15 @@
 <resources>
     <string name="app_name">App</string>
-    <string name="profile_last_activities">Ultimas atividades</string>
-    <string name="profile_options">Opções</string>
-    <string name="profile_logout">Sair</string>
-    <string name="profile_nextactv_timedate">Data/Horario</string>
-    <string name="profile_nextactv_name">Proxima atividade</string>
-    <string name="profile_username">Nome De Usuario</string>
-    <string name="home_title_text_view">Adicionados Recentemente</string>
-    <string name="course_item_title_placeholder">Course Item Title</string>
-    <string name="course_item_instructor_placeholder">Prof. M</string>
-    <string name="button_placeholder_text">Button Placeholder Text</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="course_detail_instructor_placeholder">Ministrante</string>
-    <string name="course_detail_title_placeholder">Titulo</string>
-    <string name="course_detail_description">Descrição</string>
-    <string name="course_detail_description_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae enim ac quam cursus hendrerit. Vestibulum ultricies eros tellus, tristique pretium ipsum mattis pretium. Donec enim justo, egestas non nibh eu, fermentum tempus magna. Nunc ac tellus feugiat, viverra neque sit amet, porttitor purus. Donec placerat scelerisque pharetra. Suspendisse potenti. Aliquam vestibulum consectetur cursus. Proin id scelerisque elit, ut maximus purus. In hac habitasse platea dictumst. Morbi cursus aliquet mollis. Donec vehicula viverra lorem in hendrerit. Morbi ipsum eros, vulputate et velit ut, mattis semper enim.</string>
-    <string name="course_detail_button">Agendar</string>
+    <string name="profile_last_activities">Last courses</string>
+    <string name="profile_options">Options</string>
+    <string name="profile_logout">Logout</string>
+    <string name="profile_nextactv_timedate">Date/Time</string>
+    <string name="profile_nextactv_name">Next Course</string>
+    <string name="profile_username">Username</string>
+    <string name="home_title_text_view">Recently Added</string>
+    <string name="course_detail_description">Description</string>
+    <string name="course_detail_button">Schedule</string>
+    <string name="nav_menu_home">Home</string>
+    <string name="nav_menu_search">Search</string>
+    <string name="nav_menu_profile">Profile</string>
 </resources>
