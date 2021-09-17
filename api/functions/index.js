@@ -138,6 +138,44 @@ app.get('/categories/:id', async (req, res) => {
     res.status(200).send(JSON.stringify({categoryId, ...categoryData}));
 });
 
+app.get('/categories/:id/courses', async(req, res) => {
+    const rawUsers = await admin.firestore().collection('users').get();
+    let users = {};
+    rawUsers.forEach(doc => {
+        users[doc.id] = { id: doc.id, ...doc.data()};
+    });
+
+    const rawCategories = await admin.firestore().collection('categories').get();
+    let categories = {};
+    rawCategories.forEach(doc => {
+        categories[doc.id] = { id: doc.id, ...doc.data()};
+    });
+
+    const snapshot = await admin.firestore().collection('courses').get();
+    let courses = [];
+    snapshot.forEach(doc => {
+        let id = doc.id;
+        let data = doc.data();
+        const instructor = users[data.instructorId];
+        const category = categories[data.categoryId];
+        courses.push({
+            id: id,
+            title: data.title,
+            description: data.description,
+            instructor: instructor,
+            category: category,
+            rating: data.rating,
+            videoUrl: data.videoUrl,
+            thumbnail: data.thumbnail,
+            schedule: data.schedule
+        });
+    });
+
+    courses = courses.filter( course => course.category.id == req.params.id )
+
+    res.status(200).send(JSON.stringify(courses));
+});
+
 app.post('/categories', async (req, res) => {
     const category = req.body;
     await admin.firestore().collection('categories').add(category);
