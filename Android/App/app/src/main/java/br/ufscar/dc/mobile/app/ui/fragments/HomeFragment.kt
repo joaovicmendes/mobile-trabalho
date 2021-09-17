@@ -12,8 +12,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import br.ufscar.dc.mobile.app.R
 import br.ufscar.dc.mobile.app.adapter.CourseAdapter
 import br.ufscar.dc.mobile.app.viewmodel.CourseViewModel
+import br.ufscar.dc.mobile.app.adapter.CourseOnClickListener
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), CourseOnClickListener {
     private var courseAdapter = CourseAdapter()
     private var courseViewModel: CourseViewModel? = null
 
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
         // Courses view Setup
+        courseAdapter.setClickListener(this);
         val home_courses_rv: RecyclerView = rootView.findViewById(R.id.home_courses_rv)
         home_courses_rv.adapter = courseAdapter
         home_courses_rv.layoutManager = LinearLayoutManager(activity)
@@ -43,5 +45,18 @@ class HomeFragment : Fragment() {
 
         courseViewModel!!.fetchCourses()
         return rootView
+    }
+
+    override fun onItemClick(courseId: String) {
+        var args = Bundle()
+        args.putString("courseId", courseId)
+        val courseDetailsFragment = CourseDetailsFragment()
+        courseDetailsFragment.arguments = args
+
+        activity?.supportFragmentManager?.beginTransaction()?.apply {
+            replace(R.id.fragment_frame, courseDetailsFragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 }

@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.ufscar.dc.mobile.app.R
 import br.ufscar.dc.mobile.app.adapter.CourseAdapter
+import br.ufscar.dc.mobile.app.adapter.CourseOnClickListener
 import br.ufscar.dc.mobile.app.viewmodel.CourseViewModel
 
-class SearchResultFragment : Fragment() {
+class SearchResultFragment : Fragment(), CourseOnClickListener {
     private var courseAdapter = CourseAdapter()
     private var courseViewModel: CourseViewModel? = null
 
@@ -25,6 +26,7 @@ class SearchResultFragment : Fragment() {
         val categoryId = arguments?.getString("categoryId")
 
         categoryId?.let {
+            courseAdapter.setClickListener(this);
             val search_result_rv: RecyclerView = rootView.findViewById(R.id.search_result_rv)
             search_result_rv.adapter = courseAdapter
             search_result_rv.layoutManager = LinearLayoutManager(activity)
@@ -38,5 +40,18 @@ class SearchResultFragment : Fragment() {
         }
 
         return rootView
+    }
+
+    override fun onItemClick(courseId: String) {
+        var args = Bundle()
+        args.putString("courseId", courseId)
+        val courseDetailsFragment = CourseDetailsFragment()
+        courseDetailsFragment.arguments = args
+
+        activity?.supportFragmentManager?.beginTransaction()?.apply {
+            replace(R.id.fragment_frame, courseDetailsFragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 }

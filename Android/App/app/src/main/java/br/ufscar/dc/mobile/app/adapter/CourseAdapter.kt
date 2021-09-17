@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.course_item.view.*
 
 class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
     private var courseList = emptyList<Course>()
+    private var onItemClickListener: CourseOnClickListener? = null
 
     class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -29,6 +30,9 @@ class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
             course_item_title.text = currentCourse.title
             course_item_instructor.text = currentCourse.instructor.name
             course_item_rating.numStars = currentCourse.rating
+            course_item.setOnClickListener {
+                onItemClickListener?.onItemClick(currentCourse.id)
+            }
         }
     }
 
@@ -39,5 +43,9 @@ class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
     fun setList(courses: List<Course>) {
         courseList = courses
         notifyDataSetChanged()
+    }
+
+    fun setClickListener(listener: CourseOnClickListener) {
+        onItemClickListener = listener
     }
 }

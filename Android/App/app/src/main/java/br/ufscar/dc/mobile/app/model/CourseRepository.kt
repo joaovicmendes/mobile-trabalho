@@ -13,7 +13,7 @@ class CourseRepository {
         return courseClient.getAll()
     }
 
-    suspend fun fetchCourse(id: String): Course {
+    fun fetchCourse(id: String): Call<Course> {
         return courseClient.get(id)
     }
 
