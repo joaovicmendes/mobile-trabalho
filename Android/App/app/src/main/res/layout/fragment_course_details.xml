@@ -7,73 +7,60 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.CourseDetailsFragment">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="126dp"
-        android:layout_height="107dp"
-        android:src="@android:drawable/progress_indeterminate_horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/course_details_title"
-        app:layout_constraintHorizontal_bias="0.583"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="72dp" />
-
     <TextView
         android:id="@+id/course_details_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="160dp"
-        android:text="Titulo"
+        android:layout_marginTop="40dp"
+        android:text="@string/course_detail_title_placeholder"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/course_details_description"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/course_details_teacher"
+        android:id="@+id/course_details_instructor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Ministrante"
-        app:layout_constraintStart_toStartOf="@+id/course_details_title"
+        android:text="@string/course_detail_instructor_placeholder"
+        app:layout_constraintStart_toStartOf="@+id/course_details_description"
         app:layout_constraintTop_toBottomOf="@+id/course_details_title" />
 
-    <TextView
-        android:id="@+id/textView9"
+    <RatingBar
+        android:id="@+id/course_details_rating"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Nota"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/course_details_title"
-        app:layout_constraintTop_toBottomOf="@+id/course_details_teacher" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/course_details_description"
+        app:layout_constraintTop_toBottomOf="@+id/course_details_instructor" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/course_details_descriptionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Descrição"
+        android:layout_marginTop="32dp"
+        android:text="@string/course_detail_description"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="38dp" />
+        app:layout_constraintStart_toStartOf="@+id/course_details_description"
+        app:layout_constraintTop_toBottomOf="@+id/course_details_rating" />
 
     <TextView
         android:id="@+id/course_details_description"
         android:layout_width="329dp"
         android:layout_height="251dp"
         android:layout_marginTop="16dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae enim ac quam cursus hendrerit. Vestibulum ultricies eros tellus, tristique pretium ipsum mattis pretium. Donec enim justo, egestas non nibh eu, fermentum tempus magna. Nunc ac tellus feugiat, viverra neque sit amet, porttitor purus. Donec placerat scelerisque pharetra. Suspendisse potenti. Aliquam vestibulum consectetur cursus. Proin id scelerisque elit, ut maximus purus. In hac habitasse platea dictumst. Morbi cursus aliquet mollis. Donec vehicula viverra lorem in hendrerit. Morbi ipsum eros, vulputate et velit ut, mattis semper enim."
+        android:text="@string/course_detail_description_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/course_details_descriptionTitle" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/course_details_button"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="139dp"
         android:layout_height="68dp"
-        android:text="Agendar"
+        android:text="@string/course_detail_button"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

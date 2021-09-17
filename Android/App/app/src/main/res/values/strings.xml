@@ -12,4 +12,9 @@
     <string name="button_placeholder_text">Button Placeholder Text</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="course_detail_instructor_placeholder">Ministrante</string>
+    <string name="course_detail_title_placeholder">Titulo</string>
+    <string name="course_detail_description">Descrição</string>
+    <string name="course_detail_description_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae enim ac quam cursus hendrerit. Vestibulum ultricies eros tellus, tristique pretium ipsum mattis pretium. Donec enim justo, egestas non nibh eu, fermentum tempus magna. Nunc ac tellus feugiat, viverra neque sit amet, porttitor purus. Donec placerat scelerisque pharetra. Suspendisse potenti. Aliquam vestibulum consectetur cursus. Proin id scelerisque elit, ut maximus purus. In hac habitasse platea dictumst. Morbi cursus aliquet mollis. Donec vehicula viverra lorem in hendrerit. Morbi ipsum eros, vulputate et velit ut, mattis semper enim.</string>
+    <string name="course_detail_button">Agendar</string>
 </resources>
