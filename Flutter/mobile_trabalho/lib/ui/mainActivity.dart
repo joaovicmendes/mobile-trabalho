@@ -48,12 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: CourseList(
-        items: List<CourseListCard>.generate(
-        1000,
-        (i) => CourseCard('Course $i','Instructor $i'),
-      ),
-        ),
+      body: CourseList(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

@@ -1,37 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_trabalho/entity/course.dart';
 
-abstract class CourseListCard {
-  Widget buildCourseHeader(BuildContext context);
-  Widget buildCourseInstructor(BuildContext context);
-  Widget buildCourseReview(BuildContext context);
+class CourseCard extends StatefulWidget {
+  final Course course;
+
+  const CourseCard({ Key? key, required this.course }) : super(key: key);
+
+  @override
+  _CourseCardState createState() => _CourseCardState();
 }
 
-class CourseCard implements CourseListCard {
-  final String header;
-  final String instructor;
+//TODO: visual do cartão do curso na lista
 
-  CourseCard(this.header,this.instructor);
 
+class _CourseCardState extends State<CourseCard> {
   @override
-  Widget buildCourseHeader(BuildContext context) {
-    return Text(
-      header,
-      style: Theme.of(context).textTheme.headline5,
-    );
-  }
-
-  @override
-  Widget buildCourseReview(BuildContext context) {
-    return Text(
-      header,
-      
-    );
-  }
-
-  @override
-  Widget buildCourseInstructor(BuildContext context) {
-    return Text(
-      header,
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(widget.course.title),
       
     );
   }
