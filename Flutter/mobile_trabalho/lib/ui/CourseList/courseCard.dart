@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_trabalho/entity/course.dart';
+import 'package:mobile_trabalho/db/entity/course.dart';
 
 class CourseCard extends StatefulWidget {
   final Course course;
@@ -18,7 +18,7 @@ class _CourseCardState extends State<CourseCard> {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(widget.course.title),
-      
+
     );
   }
 }
