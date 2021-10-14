@@ -4,9 +4,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-class CategorysApi{
+class CategoriesApi{
 
-  Future<List<Category>>  fetchAllCategorys() async{
+  Future<List<Category>>  fetchAllCategories() async{
 
 
     var url = Uri.parse("https://us-central1-mobile-trabalho-api.cloudfunctions.net/api/categories/");
@@ -15,20 +15,20 @@ class CategorysApi{
 
     var jsonData = json.decode(data.body);
 
-    List<Category> categorys2Return = [];
+    List<Category> categories2Return = [];
 
     for (var c in jsonData) {
       
-      Category category = Category(c["id"],c["name"],c["hexcolor"]);
+      Category category = Category(c["id"],c["name"],c["hexColor"]);
 
-      categorys2Return.add(category);
+      categories2Return.add(category);
 
 
     }
 
-    print(categorys2Return.length);
+    print(categories2Return.length);
 
-    return categorys2Return;
+    return categories2Return;
 
   }
 
@@ -49,7 +49,7 @@ class CategorysApi{
   }
 
 
-  CategorysApi();
+  CategoriesApi();
 
 
   
