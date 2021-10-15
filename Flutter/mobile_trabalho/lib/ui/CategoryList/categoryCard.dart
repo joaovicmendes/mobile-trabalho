@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_trabalho/db/entity/category.dart';
+import 'package:mobile_trabalho/ui/CourseList/courseList.dart';
 
 class CategoryCard extends StatefulWidget {
   final Category category;
@@ -16,7 +17,22 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-              child: Text(widget.category.name),
+              child: InkWell(
+                child: Text(widget.category.name),
+                onTap: (){
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context)=> Scaffold(
+                      appBar: AppBar(
+                        title: Text(widget.category.name),
+                      ),
+                      body: CourseList(categoryId: widget.category.id,),
+                    )  ),
+                  );
+                },
+              ) 
+              
+              
             );
   }
 }

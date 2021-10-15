@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_trabalho/ui/CategoryList/categoryGrid.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseCard.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseList.dart';
+import 'package:mobile_trabalho/ui/UserPage/userPage.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -31,11 +32,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget navigator(){
-    if(_selectedIndex == 0){
-      return CourseList();
-
-    }else{
+    if(_selectedIndex == 1){
       return CategoryGrid();
+    }else if(_selectedIndex == 2){
+      return UserPage();
+    }else{
+      return CourseList();
     }
   }
   
@@ -53,15 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Início',
+            label: 'Início', //index 0
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Busca',
+            label: 'Busca', //index 1
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Perfil',
+            label: 'Perfil', //index 2
           ),
         ],
         currentIndex: _selectedIndex,

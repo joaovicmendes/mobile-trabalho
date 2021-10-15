@@ -7,13 +7,12 @@ import 'package:mobile_trabalho/ui/CourseList/courseCard.dart';
 // https://stackoverflow.com/questions/54444474/make-function-parameter-optional-in-custom-widget-flutter
 
 class CourseList extends StatefulWidget {
-
   final String? categoryId;
 
   const CourseList({
     Key? key,
     this.categoryId,
-    }) : super(key: key);
+  }) : super(key: key);
 
   @override
   _CourseListState createState() => _CourseListState();
@@ -38,7 +37,7 @@ class _CourseListState extends State<CourseList> {
               itemBuilder: (context, index) {
                 return CourseCard(
                   course: snapshot.data[index],
-                  );
+                );
               },
             );
           }
