@@ -15,8 +15,8 @@ class Course {
   String schedule;
   String videoUrl;
   String thumbnail;
-  // final Category category;
-  // final User instructor;
+  final Category category;
+  final User instructor;
 
   Course(
     this.id, 
@@ -26,7 +26,7 @@ class Course {
     this.schedule,
     this.videoUrl, 
     this.thumbnail, 
-    // this.category, 
-    // this.instructor
+    this.category, 
+    this.instructor
   );
 }

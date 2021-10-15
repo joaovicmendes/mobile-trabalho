@@ -11,7 +11,7 @@ class User {
   String name;
   String username;
   String email;
-  String password;
+  String? password;
 
-  User(this.id, this.name, this.username, this.email, this.password);
+  User(this.id, this.name, this.username, this.email, [this.password]);
 }

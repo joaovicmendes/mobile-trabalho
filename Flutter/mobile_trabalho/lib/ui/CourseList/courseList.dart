@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_trabalho/db/entity/course.dart';
 import 'package:mobile_trabalho/fetch/CoursesApi.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseCard.dart';
 
@@ -20,11 +21,25 @@ class CourseList extends StatefulWidget {
 
 class _CourseListState extends State<CourseList> {
   final CoursesApi coursesApi = new CoursesApi();
+  late Future<List<Course>> _courses;
+  
+  @override
+  void initState() {
+    super.initState();
+    _courses = coursesApi.fetchAllCourses(widget.categoryId);
+  }
 
+  Future<void> _pullRefresh() async {
+    List<Course> freshFutureCourses = await coursesApi.fetchAllCourses(widget.categoryId);
+    setState(() {
+      _courses = Future.value(freshFutureCourses);
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: coursesApi.fetchAllCourses(widget.categoryId),
+        future: _courses,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return Container(
@@ -32,13 +47,16 @@ class _CourseListState extends State<CourseList> {
               child: Text("Loading..."),
             ));
           } else {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) {
-                return CourseCard(
-                  course: snapshot.data[index],
-                );
-              },
+            return RefreshIndicator(
+              onRefresh: _pullRefresh,
+              child: ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  return CourseCard(
+                    course: snapshot.data[index],
+                  );
+                },
+              ),
             );
           }
         });

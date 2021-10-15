@@ -17,8 +17,23 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+              color: Color(_getColorFromHex(widget.category.hexColor)) ,
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
               child: InkWell(
-                child: Text(widget.category.name),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      
+                      widget.category.name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        
+                      ),
+                      ),
+                  ),
+                ),
                 onTap: (){
                   Navigator.push(
                     context, 
@@ -34,5 +49,14 @@ class _CategoryCardState extends State<CategoryCard> {
               
               
             );
+  }
+
+
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
   }
 }

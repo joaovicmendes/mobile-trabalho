@@ -1,4 +1,5 @@
 
+import 'package:mobile_trabalho/db/database.dart';
 import 'package:mobile_trabalho/db/entity/user.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -14,15 +15,26 @@ class UsersApi{
   Future<User> fetchById(String id) async{
 
 
-    var url = Uri.parse("https://us-central1-mobile-trabalho-api.cloudfunctions.net/api/users/$id");
+    final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
 
-    var data = await http.get(url);
+    final userDao = database.userDao;
 
-    var jsonData = json.decode(data.body);
+    var result = await userDao.findUserById(id);
 
-    User user = User(jsonData["id"],jsonData["name"],jsonData["email"],jsonData["username"],jsonData["password"]);
+    if(result == null){
+      // print("Getting user");
+      var url = Uri.parse("https://us-central1-mobile-trabalho-api.cloudfunctions.net/api/users/$id");
 
-    return user;
+      var data = await http.get(url);
+
+      var jsonData = json.decode(data.body);
+
+      result = User(jsonData["id"],jsonData["name"],jsonData["email"],jsonData["username"],jsonData["password"]);
+    }
+
+    
+
+    return result;
   }
 
 

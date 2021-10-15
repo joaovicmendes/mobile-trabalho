@@ -62,6 +62,8 @@ class _$AppDatabase extends AppDatabase {
 
   CategoryDao? _categoryDaoInstance;
 
+  UserDao? _userDaoInstance;
+
   Future<sqflite.Database> open(String path, List<Migration> migrations,
       [Callback? callback]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
@@ -82,6 +84,8 @@ class _$AppDatabase extends AppDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Category` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `hexColor` TEXT NOT NULL, PRIMARY KEY (`id`))');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `User` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -92,6 +96,11 @@ class _$AppDatabase extends AppDatabase {
   @override
   CategoryDao get categoryDao {
     return _categoryDaoInstance ??= _$CategoryDao(database, changeListener);
+  }
+
+  @override
+  UserDao get userDao {
+    return _userDaoInstance ??= _$UserDao(database, changeListener);
   }
 }
 
@@ -123,7 +132,7 @@ class _$CategoryDao extends CategoryDao {
   }
 
   @override
-  Future<Category?> get(String id) async {
+  Future<Category?> findCategoryById(String id) async {
     return _queryAdapter.query('SELECT * FROM Category WHERE id == ?1',
         mapper: (Map<String, Object?> row) => Category(row['id'] as String,
             row['name'] as String, row['hexColor'] as String),
@@ -133,5 +142,56 @@ class _$CategoryDao extends CategoryDao {
   @override
   Future<void> insertCategory(Category category) async {
     await _categoryInsertionAdapter.insert(category, OnConflictStrategy.abort);
+  }
+}
+
+class _$UserDao extends UserDao {
+  _$UserDao(this.database, this.changeListener)
+      : _queryAdapter = QueryAdapter(database),
+        _userInsertionAdapter = InsertionAdapter(
+            database,
+            'User',
+            (User item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'username': item.username,
+                  'email': item.email,
+                  'password': item.password
+                });
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<User> _userInsertionAdapter;
+
+  @override
+  Future<List<User>> getAll() async {
+    return _queryAdapter.queryList('SELECT * FROM User',
+        mapper: (Map<String, Object?> row) => User(
+            row['id'] as String,
+            row['name'] as String,
+            row['username'] as String,
+            row['email'] as String,
+            row['password'] as String));
+  }
+
+  @override
+  Future<User?> findUserById(String id) async {
+    return _queryAdapter.query('SELECT * FROM User WHERE id == ?1',
+        mapper: (Map<String, Object?> row) => User(
+            row['id'] as String,
+            row['name'] as String,
+            row['username'] as String,
+            row['email'] as String,
+            row['password'] as String),
+        arguments: [id]);
+  }
+
+  @override
+  Future<void> insertUser(User user) async {
+    await _userInsertionAdapter.insert(user, OnConflictStrategy.abort);
   }
 }

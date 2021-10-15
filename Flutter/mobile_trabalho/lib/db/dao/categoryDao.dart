@@ -9,7 +9,7 @@ abstract class CategoryDao {
     Future<List<Category>> getAll();
 
     @Query("SELECT * FROM Category WHERE id == :id")
-    Future<Category?> get(String id);
+    Future<Category?> findCategoryById(String id);
 
     @insert
     Future<void> insertCategory(Category category);
