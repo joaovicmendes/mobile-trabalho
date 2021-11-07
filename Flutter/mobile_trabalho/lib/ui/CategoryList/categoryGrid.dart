@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_trabalho/db/database.dart';
 import 'package:mobile_trabalho/fetch/CategoryApi.dart';
 import 'package:mobile_trabalho/ui/CategoryList/categoryCard.dart';
 
 class CategoryGrid extends StatefulWidget {
-  const CategoryGrid({Key? key}) : super(key: key);
+  const CategoryGrid({Key? key, required this.db}) : super(key: key);
+  final AppDatabase db;
 
   @override
   _CategoryGridState createState() => _CategoryGridState();
@@ -15,7 +17,7 @@ class _CategoryGridState extends State<CategoryGrid> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: categoriesApi.fetchAllCategories(),
+        future: widget.db.categoryDao.getAll(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return Container(

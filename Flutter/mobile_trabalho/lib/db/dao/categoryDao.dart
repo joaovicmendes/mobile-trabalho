@@ -9,6 +9,6 @@ abstract class CategoryDao {
   @Query("SELECT * FROM Category WHERE id == :id")
   Future<Category?> findCategoryById(String id);
 
-  @insert
+  @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertCategory(Category category);
 }

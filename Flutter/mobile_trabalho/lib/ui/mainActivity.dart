@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_trabalho/db/database.dart';
+import 'package:mobile_trabalho/fetch/CategoryApi.dart';
 import 'package:mobile_trabalho/ui/CategoryList/categoryGrid.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseCard.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseList.dart';
 import 'package:mobile_trabalho/ui/UserPage/userPage.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  MyHomePage({Key? key, required this.title, required this.db}) : super(key: key);
 
   final String title;
+  final AppDatabase db;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -33,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget navigator() {
     if (_selectedIndex == 1) {
-      return CategoryGrid();
+      return CategoryGrid(db: widget.db);
     } else if (_selectedIndex == 2) {
       return UserPage();
     } else {
@@ -43,6 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    fetchAndSaveCategories();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -64,9 +60,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  fetchAndSaveCategories() async {
+    CategoriesApi categoriesApi = new CategoriesApi();
+    var response = await categoriesApi.fetchAllCategories();
+    response.forEach((category) {
+      widget.db.categoryDao.insertCategory(category);
+    });
   }
 }

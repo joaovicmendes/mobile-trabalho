@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Category` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `hexColor` TEXT NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `User` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `User` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -141,7 +141,8 @@ class _$CategoryDao extends CategoryDao {
 
   @override
   Future<void> insertCategory(Category category) async {
-    await _categoryInsertionAdapter.insert(category, OnConflictStrategy.abort);
+    await _categoryInsertionAdapter.insert(
+        category, OnConflictStrategy.replace);
   }
 }
 
@@ -175,7 +176,7 @@ class _$UserDao extends UserDao {
             row['name'] as String,
             row['username'] as String,
             row['email'] as String,
-            row['password'] as String));
+            row['password'] as String?));
   }
 
   @override
@@ -186,7 +187,7 @@ class _$UserDao extends UserDao {
             row['name'] as String,
             row['username'] as String,
             row['email'] as String,
-            row['password'] as String),
+            row['password'] as String?),
         arguments: [id]);
   }
 
