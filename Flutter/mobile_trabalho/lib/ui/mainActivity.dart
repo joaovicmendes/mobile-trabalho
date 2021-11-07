@@ -5,6 +5,7 @@ import 'package:mobile_trabalho/ui/CategoryList/categoryGrid.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseCard.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseList.dart';
 import 'package:mobile_trabalho/ui/UserPage/userPage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title, required this.db}) : super(key: key);
@@ -37,6 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var homeText = AppLocalizations.of(context)!.bottonNavigationHome;
+    var searchText = AppLocalizations.of(context)!.bottonNavigationSearch;
+    var profileText = AppLocalizations.of(context)!.bottonNavigationProfile;
     fetchAndSaveCategories();
 
     return Scaffold(
@@ -45,18 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: navigator(),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Início', //index 0
+            label: homeText, //index 0
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Busca', //index 1
+            label: searchText, //index 1
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Perfil', //index 2
+            label: profileText, //index 2
           ),
         ],
         currentIndex: _selectedIndex,

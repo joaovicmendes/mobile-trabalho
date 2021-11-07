@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_trabalho/db/database.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'ui/mainActivity.dart';
 
@@ -23,7 +25,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Aplicação', db: db),
+      home: MyHomePage(title: 'App', db: db),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('pt', ''),
+      ],
     );
   }
 }
