@@ -22,7 +22,7 @@ class CourseList extends StatefulWidget {
 class _CourseListState extends State<CourseList> {
   final CoursesApi coursesApi = new CoursesApi();
   late Future<List<Course>> _courses;
-  
+
   @override
   void initState() {
     super.initState();
@@ -30,12 +30,13 @@ class _CourseListState extends State<CourseList> {
   }
 
   Future<void> _pullRefresh() async {
-    List<Course> freshFutureCourses = await coursesApi.fetchAllCourses(widget.categoryId);
+    List<Course> freshFutureCourses =
+        await coursesApi.fetchAllCourses(widget.categoryId);
     setState(() {
       _courses = Future.value(freshFutureCourses);
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

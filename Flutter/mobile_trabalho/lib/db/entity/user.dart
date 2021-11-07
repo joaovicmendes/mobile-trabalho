@@ -1,13 +1,10 @@
-
-
 import 'package:floor/floor.dart';
 
 @entity
 class User {
-  
   @primaryKey
   String id;
-  
+
   String name;
   String username;
   String email;

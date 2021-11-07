@@ -11,7 +11,7 @@ import 'package:mobile_trabalho/db/entity/user.dart';
 
 part 'database.g.dart'; // the generated code will be there
 
-@Database(version: 1, entities: [Category,User])
+@Database(version: 1, entities: [Category, User])
 abstract class AppDatabase extends FloorDatabase {
   CategoryDao get categoryDao;
   UserDao get userDao;

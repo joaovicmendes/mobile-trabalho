@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CourseDetails extends StatefulWidget {
-  const CourseDetails({ Key? key }) : super(key: key);
+  const CourseDetails({Key? key}) : super(key: key);
 
   @override
   _CourseDetailsState createState() => _CourseDetailsState();
@@ -10,8 +10,6 @@ class CourseDetails extends StatefulWidget {
 class _CourseDetailsState extends State<CourseDetails> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-    );
+    return Container();
   }
 }

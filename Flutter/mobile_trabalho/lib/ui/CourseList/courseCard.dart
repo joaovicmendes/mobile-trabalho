@@ -12,9 +12,6 @@ class CourseCard extends StatefulWidget {
   _CourseCardState createState() => _CourseCardState();
 }
 
-
-
-
 class _CourseCardState extends State<CourseCard> {
   @override
   Widget build(BuildContext context) {
@@ -35,15 +32,11 @@ class _CourseCardState extends State<CourseCard> {
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          
           children: [
             SizedBox(height: 5),
-
             Text(
               widget.course.title,
-              
               style: const TextStyle(
-                
                 fontSize: 20.0,
               ),
               textAlign: TextAlign.left,
@@ -56,7 +49,6 @@ class _CourseCardState extends State<CourseCard> {
               ),
             ),
             SizedBox(height: 5),
-
             RatingBarIndicator(
               rating: widget.course.rating.toDouble(),
               itemBuilder: (context, index) => Icon(
@@ -68,7 +60,6 @@ class _CourseCardState extends State<CourseCard> {
               direction: Axis.horizontal,
             ),
             SizedBox(height: 5),
-
           ],
         ),
       ),

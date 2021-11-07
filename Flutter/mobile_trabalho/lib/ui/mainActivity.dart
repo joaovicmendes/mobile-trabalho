@@ -31,23 +31,20 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Widget navigator(){
-    if(_selectedIndex == 1){
+  Widget navigator() {
+    if (_selectedIndex == 1) {
       return CategoryGrid();
-    }else if(_selectedIndex == 2){
+    } else if (_selectedIndex == 2) {
       return UserPage();
-    }else{
+    } else {
       return CourseList();
     }
   }
-  
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       appBar: AppBar(
-        
         title: Text(widget.title),
       ),
       body: navigator(),
@@ -69,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
-        ),
+      ),
     );
   }
 }

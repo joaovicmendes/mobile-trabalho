@@ -1,10 +1,7 @@
-
-
 import 'package:floor/floor.dart';
 
 @entity
 class Category {
-  
   @primaryKey
   String id;
 
