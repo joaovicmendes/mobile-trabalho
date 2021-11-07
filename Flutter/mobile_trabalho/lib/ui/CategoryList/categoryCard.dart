@@ -28,6 +28,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
+                  color: Colors.white,
                 ),
               ),
             ),

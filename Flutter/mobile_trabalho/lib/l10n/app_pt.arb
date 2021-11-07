@@ -1,5 +1,6 @@
 {
     "bottonNavigationHome": "Início",
     "bottonNavigationSearch": "Busca",
-    "bottonNavigationProfile": "Perfil"
+    "bottonNavigationProfile": "Perfil",
+    "loading": "Carregando..."
 }

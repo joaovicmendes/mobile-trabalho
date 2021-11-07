@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_trabalho/db/database.dart';
 import 'package:mobile_trabalho/fetch/CategoryApi.dart';
 import 'package:mobile_trabalho/ui/CategoryList/categoryCard.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoryGrid extends StatefulWidget {
   const CategoryGrid({Key? key, required this.db}) : super(key: key);
@@ -22,7 +23,7 @@ class _CategoryGridState extends State<CategoryGrid> {
           if (snapshot.data == null) {
             return Container(
                 child: Center(
-              child: Text("Loading..."),
+              child: Text(AppLocalizations.of(context)!.loading),
             ));
           } else {
             return GridView.builder(
