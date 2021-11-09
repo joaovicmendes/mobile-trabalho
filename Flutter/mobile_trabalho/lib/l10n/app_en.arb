@@ -2,5 +2,7 @@
     "bottonNavigationHome": "Home",
     "bottonNavigationSearch": "Search",
     "bottonNavigationProfile": "Profile",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "course_details_description": "Description",
+    "course_details_schedule" : "Schedule"
 }

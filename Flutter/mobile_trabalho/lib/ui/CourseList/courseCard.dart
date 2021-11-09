@@ -13,6 +13,7 @@ class CourseCard extends StatefulWidget {
 }
 
 class _CourseCardState extends State<CourseCard> {
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +27,7 @@ class _CourseCardState extends State<CourseCard> {
                       appBar: AppBar(
                         title: Text(widget.course.title),
                       ),
-                      body: CourseDetails(),
+                      body: CourseDetails( courseId: widget.course.id,),
                     )),
           );
         },

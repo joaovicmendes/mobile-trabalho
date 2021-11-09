@@ -2,5 +2,8 @@
     "bottonNavigationHome": "Início",
     "bottonNavigationSearch": "Busca",
     "bottonNavigationProfile": "Perfil",
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "course_details_description": "Descrição",
+    "course_details_schedule" : "Agendar"
+
 }
