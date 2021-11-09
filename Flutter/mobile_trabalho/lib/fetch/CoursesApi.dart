@@ -4,8 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:mobile_trabalho/db/entity/user.dart';
 import 'dart:convert';
 
-import 'package:mobile_trabalho/fetch/UserApi.dart';
-
 class CoursesApi {
   Future<List<Course>> fetchAllCourses([String? category]) async {
     var url;

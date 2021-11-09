@@ -7,11 +7,9 @@ import 'ui/mainActivity.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    MyApp(
-      db: await $FloorAppDatabase.databaseBuilder('app_database.db').build(),
-    )
-  );
+  runApp(MyApp(
+    db: await $FloorAppDatabase.databaseBuilder('app_database.db').build(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

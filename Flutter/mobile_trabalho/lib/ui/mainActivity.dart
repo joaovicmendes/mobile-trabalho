@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mobile_trabalho/db/database.dart';
 import 'package:mobile_trabalho/fetch/CategoryApi.dart';
 import 'package:mobile_trabalho/ui/CategoryList/categoryGrid.dart';
-import 'package:mobile_trabalho/ui/CourseList/courseCard.dart';
 import 'package:mobile_trabalho/ui/CourseList/courseList.dart';
 import 'package:mobile_trabalho/ui/UserPage/userPage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title, required this.db}) : super(key: key);
+  MyHomePage({Key? key, required this.title, required this.db})
+      : super(key: key);
 
   final String title;
   final AppDatabase db;

@@ -56,7 +56,9 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       fontSize: 24.0,
                     ),
                   ),
-                  Text(AppLocalizations.of(context)!.user_page_next_activity_date,),
+                  Text(
+                    AppLocalizations.of(context)!.user_page_next_activity_date,
+                  ),
                 ],
               ),
             ),
