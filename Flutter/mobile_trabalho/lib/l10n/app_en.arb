@@ -4,5 +4,10 @@
     "bottonNavigationProfile": "Profile",
     "loading": "Loading...",
     "course_details_description": "Description",
-    "course_details_schedule" : "Schedule"
+    "course_details_schedule" : "Schedule",
+    "user_page_last_activities" : "Last activites",
+    "user_page_options" : "Options",
+    "user_page_logout" : "Logout",
+    "user_page_next_activity" : "Next activity",
+    "user_page_next_activity_date" : "Date/Hour"
 }

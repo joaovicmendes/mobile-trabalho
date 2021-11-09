@@ -23,8 +23,8 @@ class UsersApi {
 
       var jsonData = json.decode(data.body);
 
-      result = User(jsonData["id"], jsonData["name"], jsonData["email"],
-          jsonData["username"], jsonData["password"]);
+      result = User(jsonData["userId"], jsonData["name"], jsonData["email"],
+          jsonData["username"]);
     }
 
     return result;

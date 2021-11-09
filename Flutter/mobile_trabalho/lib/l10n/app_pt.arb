@@ -4,6 +4,11 @@
     "bottonNavigationProfile": "Perfil",
     "loading": "Carregando...",
     "course_details_description": "Descrição",
-    "course_details_schedule" : "Agendar"
+    "course_details_schedule" : "Agendar",
+    "user_page_last_activities" : "Ultimas atividades",
+    "user_page_options" : "Opções",
+    "user_page_logout" : "Logout",
+    "user_page_next_activity" : "Proxima atividade",
+    "user_page_next_activity_date" : "Data/Hora"
 
 }
